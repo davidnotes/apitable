@@ -241,10 +241,10 @@ public class SpaceServiceImpl extends ServiceImpl<SpaceMapper, SpaceEntity>
     @Resource
     private InternalSpaceService internalSpaceService;
 
-    @Value("${BILLING_APITABLE_ENABLED:false}")
+    @Value("${BILLING_APITABLE_ENABLED:true}")
     private Boolean billingApitableEnabled;
 
-    @Value("${SKIP_USAGE_VERIFICATION:false}")
+    @Value("${SKIP_USAGE_VERIFICATION:true}")
     private Boolean skipUsageVerification;
 
     @Override
