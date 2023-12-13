@@ -3,8 +3,7 @@ name: build
 on:
   push:
     branches:
-      - 'develop'
-      - 'release/**'
+      - 'master'
     paths-ignore:
       - '**.md'
       - 'docs/**'
@@ -86,6 +85,7 @@ jobs:
         target: [ backend-server, room-server, web-server, init-db, openresty ]
     env:
       APITABLE_DOCKER_HUB_TOKEN: ${{ secrets.APITABLE_DOCKER_HUB_TOKEN }}
+      APITABLE_DOCKER_HUB_USERNAME: ${{ secrets.APITABLE_DOCKER_HUB_USERNAME }}
     steps:
       - name: Fetch Sources
         uses: actions/checkout@v3
@@ -105,6 +105,7 @@ jobs:
     if: ${{ startsWith(github.ref, 'refs/tags/v') }}
     env:
       APITABLE_DOCKER_HUB_TOKEN: ${{ secrets.APITABLE_DOCKER_HUB_TOKEN }}
+      APITABLE_DOCKER_HUB_USERNAME: ${{ secrets.APITABLE_DOCKER_HUB_USERNAME }}
     steps:
       - name: Fetch Sources
         uses: actions/checkout@v3
@@ -125,6 +126,7 @@ jobs:
         target: [ web-server-experimental ]
     env:
       APITABLE_DOCKER_HUB_TOKEN: ${{ secrets.APITABLE_DOCKER_HUB_TOKEN }}
+      APITABLE_DOCKER_HUB_USERNAME: ${{ secrets.APITABLE_DOCKER_HUB_USERNAME }}
     steps:
       - name: Fetch Sources
         uses: actions/checkout@v3
