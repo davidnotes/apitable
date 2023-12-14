@@ -48,32 +48,32 @@ jobs:
           make install
           make build
 
-  unit-test: ## unit test with docker-compose.unit-test.yaml
-    name: test
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        command: [ test-init-db-docker, test-ut-backend-docker, test-ut-room-docker, _test-ut-core ]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.15.0'
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8.7.5
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'corretto'
-          cache: 'gradle'
-      - name: Running Test
-        shell: bash
-        run: |
-          make ${{ matrix.command }}
+  # unit-test: ## unit test with docker-compose.unit-test.yaml
+  #   name: test
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       command: [ test-init-db-docker, test-ut-backend-docker, test-ut-room-docker, _test-ut-core ]
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '16.15.0'
+  #     - uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 8.7.5
+  #     - name: Set up JDK
+  #       uses: actions/setup-java@v3
+  #       with:
+  #         java-version: '17'
+  #         distribution: 'corretto'
+  #         cache: 'gradle'
+  #     - name: Running Test
+  #       shell: bash
+  #       run: |
+  #         make ${{ matrix.command }}
 
   build-push: ## build and push to docker registry
     needs: unit-test

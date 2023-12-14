@@ -3,7 +3,7 @@ group "default" {
 }
 
 variable "IMAGE_REGISTRY" {
-  default = "docker.io"
+  default = "registry.cn-shanghai.aliyuncs.com"
 }
 
 variable "SEMVER_FULL" {
