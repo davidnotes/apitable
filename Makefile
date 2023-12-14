@@ -240,7 +240,7 @@ test-init-db-docker:
 	@echo "${GREEN}finished testing, clean up images...${RESET}"
 
 buildpush-docker: ## build all and push all to hub.registry.cn-shanghai.aliyuncs.com registry
-	echo $$APITABLE_DOCKER_HUB_TOKEN | docker login -u $$APITABLE_DOCKER_HUB_USERNAME registry.cn-shanghai.aliyuncs.com --password-stdin || true;\
+	docker login -u ${APITABLE_DOCKER_HUB_USERNAME} -p ${APITABLE_DOCKER_HUB_TOKEN} registry.cn-shanghai.aliyuncs.com \
 	$(BUILDER) $(target) --push
 
 .PHONY: build
