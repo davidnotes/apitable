@@ -76,7 +76,7 @@ jobs:
   #         make ${{ matrix.command }}
 
   build-push: ## build and push to docker registry
-    needs: unit-test
+    # needs: unit-test
     runs-on: ubuntu-latest
     #if: ${{ github.event_name != 'pull_request' }}
     #if: ${{ startsWith(github.ref, 'refs/tags/v') }}
