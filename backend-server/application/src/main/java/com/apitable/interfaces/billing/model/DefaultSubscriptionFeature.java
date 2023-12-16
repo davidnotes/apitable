@@ -212,7 +212,7 @@ public class DefaultSubscriptionFeature implements SubscriptionFeature {
 
     @Override
     public RemainTrashDays getRemainTrashDays() {
-        return new RemainTrashDays(-1L);
+        return new RemainTrashDays(90L);
     }
 
     @Override
